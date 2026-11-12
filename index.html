@@ -337,6 +337,9 @@ p { margin: 0; }
 .notes-panel .label { font-size: 12px; margin-bottom: 8px; color: var(--amber); display: flex; justify-content: space-between; }
 .keys { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); bottom: max(10px, env(safe-area-inset-bottom, 0px));
   font: 500 11px/1 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: #4f5870; display: flex; gap: 14px; z-index: 40; }
+.keys { transition: opacity .6s; }
+body.idle .keys { opacity: 0; }
+body.idle.fs, body.idle.fs * { cursor: none !important; }
 .keys kbd { font: inherit; border: 1px solid #262e44; border-radius: 4px; padding: 3px 6px; color: #8089a0; margin-right: 4px; }
 @media (max-width: 760px) { .keys { display: none; } }
 
@@ -576,6 +579,8 @@ html.printing .slide:last-of-type { break-after: auto; }
 html.printing .progress, html.printing .nav, html.printing .sect, html.printing .keys, html.printing .notes-panel, html.printing .ctl, html.printing .sim-ctrl, html.printing .hint-line { display: none !important; }
 html.printing *, html.printing *::before, html.printing *::after { animation: none !important; transition: none !important; }
 html.printing .flow .track i { transform: none; }
+.src { position: absolute; left: 120px; bottom: 66px; z-index: 5; font-family: var(--f-mono); font-size: 19px; letter-spacing: .06em; color: var(--faint); }
+.src i { font-style: italic; }
 .pnum { display: none; position: absolute; right: 120px; bottom: 64px; font-family: var(--f-mono); font-size: 20px; letter-spacing: .14em; color: var(--faint); z-index: 5; }
 html.printing .pnum { display: block; }
 </style>
@@ -691,9 +696,8 @@ html.printing .pnum { display: block; }
         <button class="card" data-a style="--d:570"><svg class="ic"><use href="#i-speech"/></svg><h3>Difficulty finding words</h3><p class="ex">stops mid-sentence, can't name everyday objects</p></button>
         <button class="card" data-a style="--d:650"><svg class="ic"><use href="#i-mood"/></svg><h3>Changes in mood or personality</h3><p class="ex">becomes anxious, suspicious or withdrawn</p></button>
       </div>
-      <div class="hint-line">Click a sign to focus on it</div>
     </div>
-    <aside class="notes">These are the most common signs. Early on they are easy to mistake for normal forgetfulness. The difference is that they keep happening and get in the way of daily life. (Click a card to highlight it while you talk about it.)</aside>
+    <aside class="notes">These are the most common signs. Early on they are easy to mistake for normal forgetfulness. The difference is that they keep happening and get in the way of daily life. (Tip: click a card to highlight it while you talk about it.)</aside>
   </section>
 
   <!-- 05 STAGES -->
@@ -746,6 +750,7 @@ html.printing .pnum { display: block; }
         </div>
       </div>
     </div>
+    <div class="src">Source: Nystuen et al., 2024</div>
     <aside class="notes">Scientists don't know the exact cause, but several factors raise the risk. Age is the strongest, and genes like APOE-ε4 play a role. These can't be changed. Others can be influenced: heart and metabolic health, physical activity, smoking, sleep and head injuries. What is good for the heart is also good for the brain.</aside>
   </section>
 
@@ -767,6 +772,7 @@ html.printing .pnum { display: block; }
         <div class="sim-ctrl"><button class="btn primary" id="nPlay"><svg><use href="#i-play"/></svg>Play the process</button><button class="btn" id="nReset"><svg><use href="#i-reset"/></svg>Healthy brain</button></div>
       </div>
     </div>
+    <div class="src">Sources: Liu et al., 2024; Nystuen et al., 2024</div>
     <aside class="notes">This is what happens at the level of brain cells. Press Play, or click each step. 1: amyloid-beta protein forms plaques between neurons. 2: tau protein forms tangles inside neurons. 3: the connections between neurons are damaged, so signals stop. 4: brain cells die and parts of the brain shrink, which causes the memory problems we see.</aside>
   </section>
 
@@ -787,6 +793,7 @@ html.printing .pnum { display: block; }
       </div>
       <div class="dx-note" data-a style="--d:1300"><b>Why early?</b><p>An early diagnosis gives the person and family time to plan, and the newest medicines only work in the early stage.</p></div>
     </div>
+    <div class="src">Source: Liu et al., 2024</div>
     <aside class="notes">There is no single test for Alzheimer's. Doctors combine several: medical and family history, memory and thinking tests, physical and neurological exams with blood tests to rule out other causes, brain scans like MRI, CT or PET, and when needed, biomarker tests that detect amyloid-beta and tau. Diagnosing early matters because the newest medicines only work in the early stage.</aside>
   </section>
 
@@ -832,10 +839,11 @@ html.printing .pnum { display: block; }
           <p class="how" id="mHow">Stops an enzyme from breaking down acetylcholine, a chemical messenger for memory. More messages get through.</p>
           <div class="badge" id="mBadge">May temporarily help memory and thinking</div>
         </div>
-        <div class="warn"><svg><use href="#i-warn"/></svg><p><b>Important:</b> none of these medicines cure Alzheimer's, and all can cause side effects. Lecanemab and donanemab need regular MRI scans to check for brain swelling or small bleeds.</p></div>
+        <div class="warn"><svg><use href="#i-warn"/></svg><p><b>Important:</b> none of these medicines cure Alzheimer's, they are not right for everyone, and all can have side effects. Lecanemab and donanemab need regular MRI scans to check for brain swelling or small bleeds.</p></div>
       </div>
     </div>
-    <aside class="notes">Donepezil, brand name Aricept, stops an enzyme from breaking down acetylcholine, a messenger the brain uses for memory, so more signals get through. It may help memory and thinking for a while. Lecanemab (Leqembi) and donanemab (Kisunla) are antibodies that help the body clear amyloid plaques. In clinical trials they slowed decline in early Alzheimer's by about 27% and 35% over about 18 months. None of them cure the disease, and they can cause side effects. (Press "Give medicine" to show the effect.)</aside>
+    <div class="src">Sources: van Dyck et al., 2023; Sims et al., 2023</div>
+    <aside class="notes">Donepezil, brand name Aricept, stops an enzyme from breaking down acetylcholine, a messenger the brain uses for memory, so more signals get through. It may help memory and thinking for a while. Lecanemab (Leqembi) and donanemab (Kisunla) are antibodies that help the body clear amyloid plaques. In clinical trials they slowed decline in early Alzheimer's by about 27% for lecanemab, and up to 35% for donanemab in people with lower tau levels, over about 18 months. None of them cure the disease, they are not suitable for everyone, and they can cause side effects. (Press "Give medicine" to show the effect.)</aside>
   </section>
 
   <!-- 11 SUPPORT -->
@@ -897,9 +905,9 @@ html.printing .pnum { display: block; }
     </header>
     <div class="body">
       <div class="refs">
-        <div class="ref" data-a style="--d:250"><div class="yr">2024</div><div><h3>Updates in Alzheimer's disease: from basic research to diagnosis and therapies</h3><p>Liu, E., Zhang, Y., &amp; Wang, J.-Z. <i>Translational Neurodegeneration</i>, 13, Article 45.</p><a href="https://doi.org/10.1186/s40035-024-00432-x" target="_blank" rel="noopener">doi.org/10.1186/s40035-024-00432-x</a></div></div>
-        <div class="ref" data-a style="--d:350"><div class="yr">2024</div><div><h3>Alzheimer's disease: models and molecular mechanisms informing disease and treatments</h3><p>Nystuen, K. L., McNamee, S. M., Akula, M., Holton, K. M., DeAngelis, M. M., &amp; Haider, N. B. <i>Bioengineering</i>, 11(1), Article 45.</p><a href="https://doi.org/10.3390/bioengineering11010045" target="_blank" rel="noopener">doi.org/10.3390/bioengineering11010045</a></div></div>
-        <div class="ref" data-a style="--d:450"><div class="yr">2023</div><div><h3>Donanemab in early symptomatic Alzheimer disease: the TRAILBLAZER-ALZ 2 randomized clinical trial</h3><p>Sims, J. R., Zimmer, J. A., Evans, C. D., et al. <i>JAMA</i>, 330(6), 512–527.</p><a href="https://doi.org/10.1001/jama.2023.13239" target="_blank" rel="noopener">doi.org/10.1001/jama.2023.13239</a></div></div>
+        <div class="ref" data-a style="--d:250"><div class="yr">2024</div><div><h3>Updates in Alzheimer's disease: From basic research to diagnosis and therapies</h3><p>Liu, E., Zhang, Y., &amp; Wang, J.-Z. <i>Translational Neurodegeneration</i>, 13, Article 45.</p><a href="https://doi.org/10.1186/s40035-024-00432-x" target="_blank" rel="noopener">doi.org/10.1186/s40035-024-00432-x</a></div></div>
+        <div class="ref" data-a style="--d:350"><div class="yr">2024</div><div><h3>Alzheimer's disease: Models and molecular mechanisms informing disease and treatments</h3><p>Nystuen, K. L., McNamee, S. M., Akula, M., Holton, K. M., DeAngelis, M. M., &amp; Haider, N. B. <i>Bioengineering</i>, 11(1), Article 45.</p><a href="https://doi.org/10.3390/bioengineering11010045" target="_blank" rel="noopener">doi.org/10.3390/bioengineering11010045</a></div></div>
+        <div class="ref" data-a style="--d:450"><div class="yr">2023</div><div><h3>Donanemab in early symptomatic Alzheimer disease: The TRAILBLAZER-ALZ 2 randomized clinical trial</h3><p>Sims, J. R., Zimmer, J. A., Evans, C. D., et al. <i>JAMA</i>, 330(6), 512–527.</p><a href="https://doi.org/10.1001/jama.2023.13239" target="_blank" rel="noopener">doi.org/10.1001/jama.2023.13239</a></div></div>
         <div class="ref" data-a style="--d:550"><div class="yr">2023</div><div><h3>Lecanemab in early Alzheimer's disease</h3><p>van Dyck, C. H., Swanson, C. J., Aisen, P., et al. <i>The New England Journal of Medicine</i>, 388(1), 9–21.</p><a href="https://doi.org/10.1056/NEJMoa2212948" target="_blank" rel="noopener">doi.org/10.1056/NEJMoa2212948</a></div></div>
       </div>
     </div>
@@ -1159,7 +1167,7 @@ html.printing .pnum { display: block; }
     const L = loop(draw);
     const INFO = [
       ['Donepezil', 'Brand name: Aricept', 'Stops an enzyme from breaking down acetylcholine, a chemical messenger for memory. More messages get through.', 'May temporarily help memory and thinking'],
-      ['Lecanemab &amp; Donanemab', 'Brand names: Leqembi · Kisunla', 'Antibodies that attach to amyloid-beta and help the body clear plaques. In trials, decline slowed by about 27% (lecanemab) and 35% (donanemab) over about 18 months.', 'May slow decline · early stage only'],
+      ['Lecanemab &amp; Donanemab', 'Brand names: Leqembi · Kisunla', 'Antibodies that attach to amyloid-beta and help the body clear plaques. In trials, they slowed decline by about 27% (lecanemab) and up to 35% (donanemab) over about 18 months.', 'May slow decline · early stage only'],
     ];
     const giveLbl = () => { $('#mGive span').textContent = on ? 'Stop medicine' : 'Give medicine'; };
     const setMode = (m, instant) => { mode = m; on = false; onV = 0; AB.length = 0; PLQ.forEach(p => p.size = 1); recv = 0; sent = 0; rate = .3; giveLbl();
@@ -1212,6 +1220,10 @@ html.printing .pnum { display: block; }
     else if (k === 'n' || k === 'N') notes.hidden = !notes.hidden;
     else if (k === 'f' || k === 'F') { const d = document; const r = d.fullscreenElement ? d.exitFullscreen() : d.documentElement.requestFullscreen?.(); r?.catch?.(() => { }); }
   });
+  let idleT = 0; const wake = () => { document.body.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => document.body.classList.add('idle'), 2500); };
+  ['mousemove', 'keydown', 'touchstart'].forEach(ev => addEventListener(ev, wake, { passive: true })); wake();
+  document.addEventListener('fullscreenchange', () => document.body.classList.toggle('fs', !!document.fullscreenElement));
+  addEventListener('keyup', e => { if (e.key === ' ') e.preventDefault(); });
   let tx = null; addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true });
   addEventListener('touchend', e => { if (tx == null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) go(idx + (dx < 0 ? 1 : -1)); tx = null; });
 })();
