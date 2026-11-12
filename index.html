@@ -569,6 +569,165 @@ body.idle.fs, body.idle.fs * { cursor: none !important; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
 }
 
+/* ---------- mobile (portrait phones): slides become one scrolling page ---------- */
+html.mobile, html.mobile body { height: auto; overflow: auto; }
+html.mobile body { padding: 0; background: var(--ink); }
+html.mobile .viewport { height: auto; }
+html.mobile .stage { position: static; transform: none; width: auto; height: auto; overflow: visible; border-radius: 0; box-shadow: none; background: none; }
+html.mobile .progress, html.mobile .nav, html.mobile .sect, html.mobile .keys, html.mobile .notes-panel, html.mobile #dust, html.mobile #glow12 { display: none !important; }
+html.mobile .slide, html.mobile #s5, html.mobile #s7, html.mobile #s10 { position: relative; inset: auto; opacity: 1; visibility: visible; transition: none; height: auto; overflow: hidden;
+  padding: 44px max(20px, env(safe-area-inset-right, 0px)) 48px max(20px, env(safe-area-inset-left, 0px)); gap: 24px; border-bottom: 1px solid var(--hair); }
+html.mobile .slide:not(#s1) [data-a] { animation: none; }
+html.mobile .eyebrow { font-size: 11px; gap: 10px; letter-spacing: .18em; }
+html.mobile .hd { gap: 14px; }
+html.mobile h2, html.mobile #s2 h2 { font-size: 33px; line-height: 1.1; max-width: none; }
+html.mobile h3 { font-size: 18px; }
+html.mobile .label { font-size: 11px; }
+html.mobile .body { flex: none; }
+html.mobile .src { position: static; font-size: 10px; letter-spacing: .04em; }
+html.mobile .btn { font-size: 14px; padding: 9px 16px; gap: 8px; }
+html.mobile .btn svg { width: 14px; height: 14px; }
+html.mobile .tabs { padding: 4px; max-width: 100%; flex-wrap: wrap; }
+html.mobile .tabs button, html.mobile .med .tabs button { font-size: 14px; padding: 8px 14px; }
+html.mobile .fig, html.mobile #s5 .fig, html.mobile #s7 .fig, html.mobile #s10 .fig { width: 100%; height: auto; border-radius: 14px; }
+html.mobile #s5 .fig { aspect-ratio: 1020 / 640; }
+html.mobile #s7 .fig { aspect-ratio: 1060 / 660; }
+html.mobile #s10 .fig { aspect-ratio: 900 / 660; }
+html.mobile .fig .tag { font-size: 9px; left: 12px; bottom: 9px; letter-spacing: .1em; }
+html.mobile .fig .ctl { right: 8px; bottom: 8px; }
+html.mobile .fig .ctl .btn { font-size: 12px; padding: 7px 12px; }
+/* photo backdrops turn into a banner at the top of the slide */
+html.mobile .photo { position: relative; inset: auto; height: 230px; margin: -44px -20px -8px; flex: none; }
+html.mobile .photo img, html.mobile #s2 .photo img, html.mobile #s11 .photo img, html.mobile #s13 .photo img { left: 0; width: 100%; height: 100%; animation: none; }
+html.mobile #s2 .photo img { object-position: 72% center; }
+html.mobile #s11 .photo img { object-position: 68% center; }
+html.mobile #s13 .photo img { object-position: 62% center; }
+html.mobile #s2 .photo::after, html.mobile #s11 .photo::after, html.mobile #s13 .photo::after { background: linear-gradient(0deg, var(--ink) 0, rgba(11,17,30,0) 55%); }
+/* 01 cover */
+html.mobile #s1 { padding: 0; min-height: min(100svh, 820px); justify-content: flex-end; gap: 0; }
+html.mobile #s1 .photo { position: absolute; inset: 0; height: auto; margin: 0; }
+html.mobile #s1 .photo img { left: 0; width: 100%; height: 100%; object-position: 66% center; animation: none; }
+html.mobile #s1 .photo::after { background: linear-gradient(0deg, var(--ink) 0, rgba(11,17,30,.88) 36%, rgba(11,17,30,.15) 68%, rgba(11,17,30,.45) 100%); }
+html.mobile .cv { position: relative; left: auto; top: auto; bottom: auto; padding: 0 20px; }
+html.mobile .cv .kicker { font-size: 12px; margin: 0 0 12px 2px; }
+html.mobile .cv h1 { font-size: 60px; }
+html.mobile .cv .sub { font-size: 17px; margin: 18px 0 0 2px; }
+html.mobile .byline { position: relative; left: auto; bottom: auto; padding: 22px 22px 40px; font-size: 14px; gap: 12px; flex-wrap: wrap; }
+html.mobile .byline b { font-size: 22px; }
+html.mobile .byline i { height: 20px; }
+/* 02 */
+html.mobile #s2 .body { gap: 24px; }
+html.mobile .uses { gap: 12px; }
+html.mobile .chips { gap: 8px; }
+html.mobile .chip { font-size: 15px; padding: 9px 14px 9px 11px; gap: 8px; }
+html.mobile .chip svg { width: 20px; height: 20px; }
+html.mobile .callout { gap: 14px; margin-top: 4px; }
+html.mobile .callout .ring { width: 44px; height: 44px; font-size: 26px; }
+html.mobile .callout p { font-size: 25px; }
+html.mobile .callout p span.sm { font-size: 14px; }
+/* 03 */
+html.mobile .facts { grid-template-columns: 1fr; height: auto; }
+html.mobile .fact, html.mobile .fact:first-child { padding: 18px 0; border-left: 0; border-top: 1px solid var(--hair); gap: 8px; }
+html.mobile .fact:first-child { border-top: 0; padding-top: 0; }
+html.mobile .fact .num { font-size: 88px; }
+html.mobile .fact .num small { font-size: 50px; }
+html.mobile .fact h3 { font-size: 20px; max-width: none; }
+html.mobile .fact p { font-size: 14px; max-width: none; }
+/* 04 */
+html.mobile .cards { grid-template-columns: 1fr; gap: 10px; }
+html.mobile .card { padding: 16px 18px; gap: 8px; border-radius: 14px; }
+html.mobile .card .ic { width: 28px; height: 28px; }
+html.mobile .card h3 { font-size: 18px; }
+html.mobile .card .ex { font-size: 14px; }
+html.mobile .card .ex::before { font-size: 11px; }
+/* 05 */
+html.mobile #s5 .body, html.mobile #s7 .body, html.mobile #s10 .body, html.mobile #s6 .body, html.mobile #s9 .body { grid-template-columns: 1fr; gap: 20px; }
+html.mobile .stage-panel { gap: 16px; }
+html.mobile .stage-panel .sname { font-size: 32px; }
+html.mobile .stage-panel .sdesc { font-size: 17px; min-height: 0; margin-top: 10px; }
+html.mobile .sbrain p { font-size: 14px; min-height: 0; }
+html.mobile .meter .row { font-size: 13px; }
+html.mobile .meter .bar { height: 8px; }
+/* 06 */
+html.mobile .grp { padding: 20px; gap: 16px; border-radius: 16px; }
+html.mobile .grp .gh h3 { font-size: 20px; }
+html.mobile .grp .gh { flex-wrap: wrap; gap: 6px; }
+html.mobile .rf { gap: 12px; }
+html.mobile .rf svg { width: 28px; height: 28px; }
+html.mobile .rf h4 { font-size: 17px; margin-bottom: 2px; }
+html.mobile .rf p { font-size: 14px; }
+html.mobile .rf.big h4 { font-size: 30px; }
+html.mobile .mod-grid { grid-template-columns: 1fr; gap: 14px; }
+/* 07 */
+html.mobile .step { grid-template-columns: 36px 1fr; gap: 2px 12px; padding: 10px 12px; border-radius: 12px; }
+html.mobile .step .n { width: 30px; height: 30px; font-size: 13px; }
+html.mobile .step h3 { font-size: 17px; }
+html.mobile .step h3 .dot { width: 10px; height: 10px; margin-left: 8px; }
+html.mobile .step p { font-size: 14px; }
+html.mobile .sim-ctrl { margin-top: 12px; gap: 10px; flex-wrap: wrap; }
+/* 08 */
+html.mobile .flow { grid-template-columns: 1fr; gap: 16px; margin-top: 0; }
+html.mobile .flow .track { display: none; }
+html.mobile .node { display: grid; grid-template-columns: 48px 1fr; column-gap: 14px; row-gap: 2px; align-items: start; }
+html.mobile .node > :not(.dotc) { grid-column: 2; }
+html.mobile .node .dotc { grid-row: 1 / span 3; width: 48px; height: 48px; }
+html.mobile .node .dotc svg { width: 22px; height: 22px; }
+html.mobile .node.key .dotc { box-shadow: 0 0 0 6px rgba(240,183,122,.12), 0 0 24px rgba(240,183,122,.45); }
+html.mobile .node .label { font-size: 10px; }
+html.mobile .node h3 { font-size: 17px; }
+html.mobile .node p { font-size: 14px; }
+html.mobile .dx-note { flex-direction: column; align-items: flex-start; gap: 6px; padding: 16px 18px; margin-top: 20px; }
+html.mobile .dx-note b { font-size: 24px; }
+html.mobile .dx-note p { font-size: 15px; }
+/* 09 */
+html.mobile .col { padding-top: 20px; gap: 16px; }
+html.mobile .col .colh h3 { font-size: 30px; }
+html.mobile .col .colh svg { width: 30px; height: 30px; }
+html.mobile .li { font-size: 16px; grid-template-columns: 12px 1fr; gap: 10px; }
+html.mobile .li::before { width: 7px; height: 7px; transform: translateY(-2px); }
+/* 10 */
+html.mobile .med { gap: 14px; }
+html.mobile .med .mname { font-size: 32px; }
+html.mobile .med .mname small { font-size: 11px; margin-top: 6px; }
+html.mobile .med .how { font-size: 16px; min-height: 0; margin-top: 10px; }
+html.mobile .badge { font-size: 11px; padding: 7px 12px; margin-top: 10px; width: auto; max-width: 100%; }
+html.mobile .warn { padding: 14px 16px; gap: 12px; margin-top: 4px; }
+html.mobile .warn svg { width: 22px; height: 22px; }
+html.mobile .warn p { font-size: 14px; }
+/* 11 */
+html.mobile #s11 .body { gap: 22px; max-width: none; }
+html.mobile .tips { gap: 16px; }
+html.mobile .tip { grid-template-columns: 42px 1fr; gap: 14px; }
+html.mobile .tip .tic { width: 42px; height: 42px; border-radius: 12px; }
+html.mobile .tip .tic svg { width: 21px; height: 21px; }
+html.mobile .tip h3 { font-size: 17px; margin-bottom: 2px; }
+html.mobile .tip p { font-size: 14px; }
+html.mobile .values { font-size: 24px; }
+/* 12 */
+html.mobile #s12 .body { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 10px; }
+html.mobile .cg { padding: 18px 16px; gap: 8px; border-radius: 14px; }
+html.mobile .cg .cic { width: 32px; height: 32px; }
+html.mobile .cg h3 { font-size: 24px; }
+html.mobile .cg p { font-size: 13px; }
+html.mobile .quote { margin-top: 12px; gap: 14px; }
+html.mobile .quote::before { width: 28px; }
+html.mobile .quote p { font-size: 25px; }
+/* 13 */
+html.mobile #s13 .body { gap: 28px; }
+html.mobile .chain { gap: 8px; }
+html.mobile .chain .pill { font-size: 14px; padding: 9px 14px; }
+html.mobile .chain .arr { font-size: 16px; }
+html.mobile .thanks { gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+html.mobile .thanks b { font-size: 64px; }
+html.mobile .thanks span { font-size: 15px; }
+/* 14 */
+html.mobile .refs { grid-template-columns: 1fr; gap: 18px; }
+html.mobile .ref { grid-template-columns: 52px 1fr; gap: 12px; padding-top: 16px; }
+html.mobile .ref .yr { font-size: 24px; }
+html.mobile .ref h3 { font-size: 18px; margin-bottom: 6px; }
+html.mobile .ref p { font-size: 13px; }
+html.mobile .ref a { font-size: 11px; overflow-wrap: anywhere; }
+
 /* ---------- print / PDF: every slide on its own 1920×1080 page ---------- */
 @page { size: 1920px 1080px; margin: 0; }
 html.printing, html.printing body { height: auto; overflow: visible; padding: 0; background: var(--ink); }
@@ -1191,8 +1350,19 @@ html.printing .pnum { display: block; }
   const total = slides.length; $('#tot').textContent = String(total).padStart(2, '0');
   if (PRINT) {
     document.documentElement.classList.add('printing');
+    const only = +new URLSearchParams(location.search).get('only'); if (only) slides.forEach((s, i) => { if (i !== only - 1) s.style.display = 'none'; });
     slides.forEach((s, i) => { s.classList.add('active'); if (i) { const p = document.createElement('div'); p.className = 'pnum'; p.textContent = String(i + 1).padStart(2, '0') + ' / ' + total; s.appendChild(p); } engines[s.id]?.print?.(); });
     $$('.count-up').forEach(el => el.textContent = el.dataset.to);
+    return;
+  }
+  const MOBILE = matchMedia('(max-width: 760px)');
+  MOBILE.addEventListener?.('change', () => location.reload());
+  if (MOBILE.matches) {
+    document.documentElement.classList.add('mobile');
+    slides.forEach(s => s.classList.add('active'));
+    $$('.count-up').forEach(el => el.textContent = el.dataset.to);
+    const io = new IntersectionObserver(es => es.forEach(en => { const e = engines[en.target.id]; if (!e || en.target.id === 's1' || en.target.id === 's3') return; en.isIntersecting ? e.enter?.() : e.leave?.(); }), { threshold: 0.2 });
+    slides.forEach(s => io.observe(s));
     return;
   }
   const fit = () => { const vp = stage.parentElement.getBoundingClientRect(); stage.style.setProperty('--s', Math.min(vp.width / 1920, vp.height / 1080)); };
